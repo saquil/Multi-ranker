@@ -6,7 +6,7 @@ This code is based on [DR-DSN](https://github.com/KaiyangZhou/pytorch-vsumm-rein
 
 ## Pairwise Ranking Model for Global Summarization (Standard ranker)
 
-Standard ranker learns a ranking function <img src="https://latex.codecogs.com/svg.latex?\Large&space;R" title="\Large R" /> that associates high ranking scores to important video segments so that a summary can be built by selecting the top-ranked segments.
+Standard ranker learns a ranking function <img src="https://latex.codecogs.com/svg.latex?R" title="R" /> that associates high ranking scores to important video segments so that a summary can be built by selecting the top-ranked segments.
 
 <p align="center">
 <img src="docs/ranker.jpg" width="300" />
