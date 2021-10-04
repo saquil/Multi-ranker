@@ -22,7 +22,9 @@ Given the number of preferences <img src="https://latex.codecogs.com/svg.latex?\
 
 ## Datasets
 
-### TVSum
+### [TVSum](https://github.com/yalesong/tvsum)
+
+TVSum dataset is a collection of 50 YouTube videos grouped into 10 categories. Each video is split into a set of 2 second-long shots. 20 users are asked to rate how important each shot is, compared to other shots from the same video in order to build 20 reference summaries. The GT summary for each video is defined as the mean of the corresponding 20 reference summaries.
 
 ### SumMe
 
