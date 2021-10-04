@@ -14,7 +14,7 @@ Standard ranker learns a ranking function <img src="https://latex.codecogs.com/s
 
 ## Multiple Pairwise Ranking Model for Personalized Summarization (Multi-ranker)
 
-Given the number of preferences <img src="https://latex.codecogs.com/svg.latex?\Large&space;x=\frac{-b\pm\sqrt{b^2-4ac}}{2a}" title="\Large x=\frac{-b\pm\sqrt{b^2-4ac}}{2a}" />, Multi-ranker learns a set of sub-rankers <img src="https://render.githubusercontent.com/render/math?math=\{R_j\}_{j=1}^P"> that are jointly trained so the local summaries conform with the preferences and the global summary max-aggregates the sub-rankers' scores. 
+Given the number of preferences <img src="https://latex.codecogs.com/svg.latex?\large&space;P" title="\large P" />, Multi-ranker learns a set of sub-rankers <p align="center"><img src="https://render.githubusercontent.com/render/math?math=\{R_j\}_{j=1}^P"></p> that are jointly trained so the local summaries conform with the preferences and the global summary max-aggregates the sub-rankers' scores. 
 
 <p align="center">
 <img src="docs/multi_ranker.jpg" width="500" />
