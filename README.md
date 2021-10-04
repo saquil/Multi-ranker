@@ -8,8 +8,17 @@ This code is based on [DR-DSN](https://github.com/KaiyangZhou/pytorch-vsumm-rein
 
 Standard ranker learns a ranking function <img src="https://render.githubusercontent.com/render/math?math=\large R"> that associates high ranking scores to important video segments so that a summary can be built by selecting the top-ranked segments.
 
+<p align="center">
+<img src="docs/ranker.jpg" width="500" />
+</p>
 
 ## Multiple Pairwise Ranking Model for Personalized Summarization (Multi-ranker)
+
+Given the number of preferences <img src="https://render.githubusercontent.com/render/math?math=\large P">, Multi-ranker learns a set of sub-rankers <img src="https://render.githubusercontent.com/render/math?math=\large \{R_j\}_{j=1}^P"> that are jointly trained so the local summaries conform with the preferences and the global summary max-aggregates the sub-rankers' scores. 
+
+<p align="center">
+<img src="docs/multi_ranker.jpg" width="500" />
+</p>
 
 ## Datasets
 
