@@ -26,9 +26,21 @@ Given the number of preferences <img src="https://latex.codecogs.com/svg.latex?\
 
 TVSum dataset is a collection of 50 YouTube videos grouped into 10 categories. Each video is split into a set of 2 second-long shots. 20 users are asked to rate how important each shot is, compared to other shots from the same video in order to build 20 reference summaries. The GT summary for each video is defined as the mean of the corresponding 20 reference summaries.
 
-### SumMe
+### [SumMe](https://gyglim.github.io/me/vsum/index.html)
 
-### FineGym
+SumMe dataset is constituted of 25 videos containing a variety of events. For each video, 15 to 18 reference interval-based keyshot summaries were associated. These summaries are converted to frame-level reference summaries by marking the frames contained in the keyshots with score 1 and frames not contained in the keyshots by
+score 0. Afterwards, the GT summary associated with each video is defined as the mean of 15 to 18 reference summaries.
+
+### [FineGym](https://sdolivia.github.io/FineGym/)
+
+FineGym is a fine-grained action recognition dataset that provides action level temporal annotations for 156 YouTube gymnasium videos. Since the videos are of long duration, we only used 50 sampled videos for experiments purpose and listed their ID in the Supplemental Material. In this case, we do not have reference summaries instead, we define one reference summary and the GT summary for each video by marking the frames contained in the action keyshots with score 1 and frames not contained in the keyshots by score 0.
+
+## Datasets Preprocessing
+
+We opt for the following dataset preprocessing to obtain the videos' segment features:
+
+- [3D ResNet](https://github.com/kenshohara/video-classification-3d-cnn-pytorch) pretrained on Kinetics with features of 2048 dimensions where each feature represents a segment of 16 frames (mainly used for FineGym).
+- The [baseline features](https://kingston.box.com/shared/static/zefb0i17mx3uvspgx70hovt9rr2qnv7y.zip) provided by [VASNet](https://github.com/ok1zjf/VASNet) with features of 1024 dimensions where each feature represents a segment of 15 frames (mainly used for the quantitative comparisons).
 
 ## Prerequisites
 
