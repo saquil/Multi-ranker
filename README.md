@@ -44,20 +44,44 @@ We opt for the following dataset preprocessing to obtain the videos' segment fea
 
 ## Prerequisites
 
+- Python 3.6.9
+- Pytorch 1.3.1
+- NVIDIA GPU + CUDA 9.2
+- Torchvision 0.4.2
+
 ## Getting Started
 
 ### Installation
 
+- Install PyTorch and Torchvision from [http://pytorch.org](http://pytorch.org) or through the following pip/conda commands:
+```shell
+pip install torch==1.3.1+cu92 torchvision==0.4.2+cu92 -f https://download.pytorch.org/whl/torch_stable.html
+```
+```shell
+conda install pytorch==1.3.1 torchvision==0.4.2 cudatoolkit=9.2 -c pytorch
+```
+- Clone this repository.
+```shell
+git clone https://github.com/saquil/Multi-ranker
+cd Multi-ranker
+```
+
 ### Standard ranker training
+
 
 ### Standard ranker evaluation
 
+
 ### Multi-ranker training
+
 
 ### Multi-ranker evaluation
 
+
 ### Plots & Results
 
+
 ## Citation
+
 
 ## Poster and Supplementary Material
