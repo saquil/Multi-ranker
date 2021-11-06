@@ -68,6 +68,8 @@ cd Multi-ranker
 
 ### Standard ranker training
 
+- Run `generate_pairset.py` to generate segment-level pairwise comparisons per each video using the [baseline features](https://kingston.box.com/shared/static/zefb0i17mx3uvspgx70hovt9rr2qnv7y.zip) of each dataset `eccv16_dataset_tvsum_google_pool5.h5` and `eccv16_dataset_summe_google_pool5.h5`.
+
 
 ### Standard ranker evaluation
 
