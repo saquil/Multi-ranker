@@ -89,6 +89,12 @@ python3 main.py --epoch=1 --batch_size=128 --dataset=summe --mode=training --mod
 python3 gather_exp.py --save_dir=models/tvsum --metric=kendall
 python3 gather_exp.py --save_dir=models/tvsum --metric=spearman
 ```
+```
+Standard ranker kendall tau validation-test: [0.17585701/0.02330799]
+Human kendall tau validation-test: [0.17551309/0.02265591]
+Standard ranker spearman rho validation-test: [0.23019827/0.03071953]
+Human spearman rho validation-test: [0.20185220/0.02602781]
+```
 
 ### Multi-ranker training
 
