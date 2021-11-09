@@ -81,7 +81,12 @@ python3 main.py --epoch=1 --batch_size=128 --mode=training --model_name=ranker_b
 
 ### Standard ranker evaluation
 
-- Run `gather_exp.py` to aggregate the evaluations of the trained Standard rankers across the dataset splits for a selectec validation/test option.
+- Run `gather_exp.py` to aggregate the evaluations of the trained Standard rankers across the dataset splits for a selected validation/test option.
+```shell
+python3 gather_exp.py --save_dir=models/tvsum --metric=kendall
+python3 gather_exp.py --save_dir=models/tvsum --metric=spearman
+```
+
 
 ### Multi-ranker training
 
