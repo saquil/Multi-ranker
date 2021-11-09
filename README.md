@@ -102,7 +102,7 @@ Human spearman rho validation-test: [0.20185220/0.02602781]
 ### Multi-ranker evaluation
 
 
-### Plots & Results
+%### Plots & Results
 
 
 ## Citation
