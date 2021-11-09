@@ -95,6 +95,16 @@ Human kendall tau validation-test: [0.17551309/0.02265591]
 Standard ranker spearman rho validation-test: [0.23019827/0.03071953]
 Human spearman rho validation-test: [0.20185220/0.02602781]
 ```
+```python
+python3 gather_exp.py --save_dir=models/summe --metric=kendall
+python3 gather_exp.py --save_dir=models/summe --metric=spearman
+```
+```
+Standard ranker kendall tau validation-test: [0.00682317/0.04831031]
+Human kendall tau validation-test: [0.17960041/0.01065329]
+Standard ranker spearman rho validation-test: [0.00865731/0.05963134]
+Human spearman rho validation-test: [0.18633639/0.01112780]
+```
 
 ### Multi-ranker training
 
@@ -108,4 +118,4 @@ Human spearman rho validation-test: [0.20185220/0.02602781]
 ## Citation
 
 
-## Poster and Supplementary Material
+## Poster <!--and Supplementary Material-->
