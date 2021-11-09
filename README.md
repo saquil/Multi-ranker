@@ -42,6 +42,8 @@ We opt for the following dataset preprocessing to obtain the videos' segment fea
 - [3D ResNet](https://github.com/kenshohara/video-classification-3d-cnn-pytorch) pretrained on Kinetics with features of 2048 dimensions where each feature represents a segment of 16 frames (mainly used for FineGym dataset).
 - The [baseline features](https://kingston.box.com/shared/static/zefb0i17mx3uvspgx70hovt9rr2qnv7y.zip) provided by [VASNet](https://github.com/ok1zjf/VASNet) with features of 1024 dimensions where each feature represents a segment of 15 frames (mainly used for SumMe and TVsum datasets).
 
+This code relies on the [baseline features](https://kingston.box.com/shared/static/zefb0i17mx3uvspgx70hovt9rr2qnv7y.zip) with the corresponding files `eccv16_dataset_tvsum_google_pool5.h5` and `eccv16_dataset_summe_google_pool5.h5` for TVSum and SumMe datasets respectively. However, these files are designed for the classical summarization pipeline (importance score estimation + KTS segmentation + segments selection) while the summarization pipeline in this work consists only of importance score estimation. We suggest the updated baseline with altered files to `iccv21_dataset_tvsum_google_pool5.h5` and `iccv21_dataset_summe_google_pool5.h5` by deleting irrelevant keys and modifying the key `user_summary` to correspond to the original users/annotators reference summaries in [TVSum](https://github.com/yalesong/tvsum) and [SumMe](https://gyglim.github.io/me/vsum/index.html).
+
 ## Prerequisites
 
 - Python 3.6.9
@@ -68,12 +70,18 @@ cd Multi-ranker
 
 ### Standard ranker training
 
-- Run `generate_pairset.py` to generate segment-level pairwise comparisons per each video using the [baseline features](https://kingston.box.com/shared/static/zefb0i17mx3uvspgx70hovt9rr2qnv7y.zip) of each dataset `eccv16_dataset_tvsum_google_pool5.h5` and `eccv16_dataset_summe_google_pool5.h5`.
+- Run `generate_pairset.py` to generate segment-level pairwise comparisons per each video using the [updated baseline](https://google.com) files of each dataset `iccv21_dataset_tvsum_google_pool5.h5` and `iccv21_dataset_summe_google_pool5.h5`.
 
-- Run `create_split.py` to generate a json file that contains the dataset splits and the training, validation, and test sets according to the experimental protocol.
+- Run `dataset/create_split.py` to generate a json file that contains the dataset splits and the training, validation, and test sets according to the experimental protocol.
+
+- Run `launch_exp.py` to launch the training of Standard ranker per each split for a selected validation/test option. Or simply set your parameters and run `main.py` like the following:
+```shell
+python3 main.py --epoch=1 --batch_size=128 --mode=training --model_name=ranker_b128_p2_s0_v0 --pairset=./pairset/pairs_2k.npy --split=0 --validation=4
+```
 
 ### Standard ranker evaluation
 
+- Run `gather_exp.py` to aggregate the evaluations of the trained Standard rankers across the dataset splits for a selectec validation/test option.
 
 ### Multi-ranker training
 
