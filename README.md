@@ -1,4 +1,4 @@
-# [Multiple Pairwise Ranking Networks for Personalized Video Summarization](https://www.yongliangyang.net/docs/multiRanker_iccv21.pdf)
+# [Multiple Pairwise Ranking Networks for Personalized Video Summarization](https://openaccess.thecvf.com/content/ICCV2021/papers/Saquil_Multiple_Pairwise_Ranking_Networks_for_Personalized_Video_Summarization_ICCV_2021_paper.pdf)
 
 This repository provides PyTorch implementations for Multi-ranker paper published in ICCV 2021.
 
