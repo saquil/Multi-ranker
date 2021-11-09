@@ -116,6 +116,15 @@ Human spearman rho validation-test: [0.18633639/0.01112780]
 
 
 ## Citation
-
-
+If you use this code for your research, please cite our paper.
+```
+@inproceedings{saquil2021ranking,
+title = {Multiple Pairwise Ranking Networks for Personalized Video Summarization},
+author = {Yassir Saquil and Da Chen and Yuan He and Chuan Li and Yongliang Yang},
+year = {2021},
+booktitle = {ICCV},
+}
+```
 ## Poster <!--and Supplementary Material-->
+
+- You can find our ICCV 2021 poster [here](https://drive.google.com/file/d/16p_aZ7p2gyzNQkb6EFBVN1q1Uutp2pFV/view?usp=sharing)
