@@ -76,9 +76,11 @@ cd Multi-ranker
 
 - Run `launch_exp.py` to launch the training of Standard ranker per each split for a selected validation/test option. Or simply set your parameters and run `main.py` like the following:
 ```shell
-python3 main.py --epoch=1 --batch_size=128 --mode=training --model_name=ranker_b128_p2_s0_v4 --pairset=./pairset/pairs_2k.npy --split=0 --validation=4
+python3 main.py --epoch=1 --batch_size=128 --dataset=tvsum --mode=training --model_name=ranker_b128_p2_s0_v4 --pairset=./pairset/tvsum/pairs_2k.npy --split=0 --validation=4
 ```
-
+```shell
+python3 main.py --epoch=1 --batch_size=128 --dataset=summe --mode=training --model_name=ranker_b128_p2_s0_v4 --pairset=./pairset/summe/pairs_2k.npy --split=0 --validation=4
+```
 ### Standard ranker evaluation
 
 - Run `gather_exp.py` to aggregate the evaluations of the trained Standard rankers across the dataset splits for a selected validation/test option.
@@ -87,7 +89,6 @@ python3 main.py --epoch=1 --batch_size=128 --mode=training --model_name=ranker_b
 python3 gather_exp.py --save_dir=models/tvsum --metric=kendall
 python3 gather_exp.py --save_dir=models/tvsum --metric=spearman
 ```
-
 
 ### Multi-ranker training
 
