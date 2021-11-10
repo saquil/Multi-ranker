@@ -70,7 +70,7 @@ cd Multi-ranker
 
 ### Standard ranker training
 
-- Run `generate_pairset.py` to generate segment-level pairwise comparisons per each video using the [updated baseline](https://drive.google.com/file/d/1WhDSgy35al5Vp6DsvaKTJ_H0QpWQhqaP/view?usp=sharing) files of each dataset `iccv21_dataset_tvsum_google_pool5.h5` and `iccv21_dataset_summe_google_pool5.h5`.
+- Run `generate_pairset.py` to generate segment-level pairwise comparisons per each video using the [updated baseline](https://drive.google.com/file/d/1WhDSgy35al5Vp6DsvaKTJ_H0QpWQhqaP/view?usp=sharing) files of each dataset `iccv21_dataset_tvsum_google_pool5.h5` and `iccv21_dataset_summe_google_pool5.h5` placed in `dataset` folder.
 
 - Run `dataset/create_split.py` to generate a json file that contains the dataset splits and the training, validation, and test sets according to the experimental protocol.
 
