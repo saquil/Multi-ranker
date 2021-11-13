@@ -90,9 +90,9 @@ python3 gather_exp.py --save_dir=models/tvsum --metric=kendall
 python3 gather_exp.py --save_dir=models/tvsum --metric=spearman
 ```
 ```
-Standard ranker kendall tau validation-test: [0.17585701/0.02330799]
+Standard ranker kendall tau validation-test: [0.17562000/0.02417100]
 Human kendall tau validation-test: [0.17551309/0.02265591]
-Standard ranker spearman rho validation-test: [0.23019827/0.03071953]
+Standard ranker spearman rho validation-test: [0.23012279/0.03191806]
 Human spearman rho validation-test: [0.20185220/0.02602781]
 ```
 ```python
