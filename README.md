@@ -107,10 +107,44 @@ Human spearman rho validation-test: [0.18633639/0.01112780]
 ```
 
 ### Multi-ranker training
-TO DO
+
+- Run `dataset/clustering/feats_for_clustering.py` to sample segment features from the dataset for k-means clustering.
+
+- Run `dataset/clustering/cluster.py` to generate GT and reference summaries per each cluster/preference.
+
+- Run `generate_pairset_multi.py` to generate segment-level pairwise comparisons per each video with respect to each preference. 
+
+- Run `launch_exp.py` to launch the training of Multi-ranker per each split for a selected validation/test option. Or simply set your parameters and run `main.py` like the following:
+```shell
+python3 main.py --epoch=1 --batch_size=128 --dataset=tvsum --mode=training --model_name=multi_ranker_pr4_l0.5_b128_p2_s0_v4 --pairset_multi=./pairset/tvsum/pairs_multi_2k_4.npy --pairset=./pairset/tvsum/pairs_2k.npy --users=dataset/clustering/preferences_tvsum_4.npy --multi=True --split=0 --validation=4 --preference=4 --lbda=0.5
+```
+```shell
+python3 main.py --epoch=1 --batch_size=128 --dataset=summe --mode=training --model_name=multi_ranker_pr4_l0.5_b128_p2_s0_v4 --pairset_multi=./pairset/summe/pairs_multi_2k_4.npy --pairset=./pairset/summe/pairs_2k.npy --users=dataset/clustering/preferences_summe_4.npy --multi=True --split=0 --validation=4 --preference=4 --lbda=0.5
+```
 
 ### Multi-ranker evaluation
-TO DO
+
+- Run `gather_preference_exp.py` to aggregate the evaluations of the trained Multi-ranker across the dataset splits for selected validation/test, number of pairs, batch size, lambda and preference options.
+
+```python
+python3 gather_preference_exp.py --save_dir=models/tvsum --metric=kendall
+```
+```
+Kendall tau global validation-test: [0.16549421/0.03240645]
+Kendall tau local validation-test: [0.37415068/0.06964904]
+Global human kendall tau validation-test: [0.17551309/0.02265591]
+Local human kendall tau validation-test: [0.87186231/0.01099596]
+```
+```python
+python3 gather_preference_exp.py --save_dir=models/summe --metric=kendall
+```
+```
+Kendall tau global validation-test: [0.00070850/0.04999284]
+Kendall tau local validation-test: [0.00175680/0.04216613]
+Global human kendall tau validation-test: [0.17960041/0.01065329]
+Local human kendall tau validation-test: [0.26068578/0.01967284]
+```
+
 
 <!--### Plots & Results-->
 
