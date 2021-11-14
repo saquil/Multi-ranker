@@ -5,7 +5,7 @@ import matplotlib.pyplot as plt
 
 
 parser = argparse.ArgumentParser()
-# aggregate the evaluations of the models across the dataset splits for a selected validation/test option
+# aggregate the evaluations of the models across the dataset splits for selected validation/test, number of pairs, and batch size options
 parser.add_argument('--model_name', type=str, default='ranker')
 parser.add_argument('--save_dir', type=str, default='models/tvsum', choices=['models/tvsum', 'models/summe'])
 parser.add_argument('--metric', type=str, default='kendall', choices=['kendall','spearman'])
@@ -69,10 +69,10 @@ if args.metric == 'kendall':
 elif args.metric == 'spearman':
 	print("Human spearman rho validation-test: [%.8f/%.8f]" % (mu[-1], sig[-1]))
 plt.fill_between(x, mu-sig, mu+sig, facecolor=pl[0].get_color(), alpha=0.2)
-if args.save_dir == 'save_dir/tvsum':
-	plt.title('Standard ranker validation performance on TVSum dataset')
-elif args.save_dir == 'save_dir/summe':
-	plt.title('Standard ranker validation performance on SumMe dataset')				
+if args.save_dir == 'models/tvsum':
+	plt.title('Standard ranker validation/test performance on TVSum dataset')
+elif args.save_dir == 'models/summe':
+	plt.title('Standard ranker validation/test performance on SumMe dataset')				
 plt.xlabel('Epoch')
 if args.metric == 'kendall':
 	plt.ylabel('Kendall Tau')
@@ -83,6 +83,6 @@ plt.legend(loc=1)
 plt.grid(True)
 plt.tight_layout()		
 
-path = os.path.join('results', args.model_name + '_' + args.metric + '.jpg')
+path = os.path.join('results', args.model_name + '_' + args.save_dir.split('/')[1] + '_' + args.metric + '.jpg')
 plt.savefig(path)
 

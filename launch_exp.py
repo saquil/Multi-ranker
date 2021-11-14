@@ -57,7 +57,7 @@ for split in range(args.nsplits):
 	if args.type == 'ranker':
 		cmd = cmd + " python3 main.py --epoch="+str(args.epoch)+" --batch_size="+ str(args.batch_size) +" --dataset="+ args.dataset +" --mode=training --model_name="+ model_name +" --pairset=./pairset/"+ args.dataset +"/pairs_"+str(args.npairs//1000)+"k.npy --split="+str(split)+" --validation="+str(args.validation)
 	elif args.type == 'multi_ranker':
-		cmd = cmd + " python3 main.py --epoch="+str(args.epoch)+" --batch_size="+ str(args.batch_size) +" --dataset="+ args.dataset +" --mode=training --model_name="+ model_name +" --pairset_multi=./pairset/"+ args.dataset +"/pairs_multi_"+str(args.npairs//1000)+"k_"+str(args.preference)+".npy --dataset=multi_pairset --pairset=./pairset/"+ args.dataset  +"/pairs_"+str(args.npairs//1000)+"k.npy --multi=True --split="+str(split)+" --validation="+str(args.validation)+" --preference="+str(args.preference)+" --lbda="+str(args.lbda)
+		cmd = cmd + " python3 main.py --epoch="+str(args.epoch)+" --batch_size="+ str(args.batch_size) +" --dataset="+ args.dataset +" --mode=training --model_name="+ model_name +" --pairset_multi=./pairset/"+ args.dataset +"/pairs_multi_"+str(args.npairs//1000)+"k_"+str(args.preference)+".npy --pairset=./pairset/"+ args.dataset  +"/pairs_"+str(args.npairs//1000)+"k.npy --users=dataset/clustering/preferences_"+args.dataset+"_"+str(args.preference)+".npy  --multi=True --split="+str(split)+" --validation="+str(args.validation)+" --preference="+str(args.preference)+" --lbda="+str(args.lbda)
 
 	ps.append(sp.Popen(cmd, shell=True, stdout=sys.stdout, stderr=sys.stderr))
 	time.sleep(60)

@@ -24,10 +24,11 @@ def parse_args():
     parser.add_argument('--beta2', type=float, default=0.999)
     parser.add_argument('--gpu_mode', type=bool, default=True)
     parser.add_argument('--benchmark_mode', type=bool, default=True)
-    parser.add_argument('--mode', type=str, default='training', choices=['training', 'testing', 'kendall', 'spearman', 'both', 'both_subaction', 'human', 'comb_subaction'], help='The task to perform by the script')
+    parser.add_argument('--mode', type=str, default='training', choices=['training', 'local_preference', 'comb_preference'], help='The task to perform by the script')
     parser.add_argument('--model_name', type=str, default='ranker', help='The initial of the name of the model')
-    parser.add_argument('--pairset', type=str, default='./pairset/tvsum/pairs_2k.npy', choices=['./pairset/tvsum/pairs_2k.npy', './pairset/summe/pairs_2k.npy'], help='The global pairwise comparisons of the segments')
-    parser.add_argument('--pairset_multi', type=str, default='./pairset/tvsum/pairs_multi_2k_4.npy', choices=['./pairset/tvsum/pairs_multi_2k_4.npy', './pairset/summe/pairs_multi_2k_4.npy'], help='The local pairwise comparisons of the segments w.r.t. each preference for Multi-ranker')
+    parser.add_argument('--pairset', type=str, default='./pairset/tvsum/pairs_2k.npy', help='The global pairwise comparisons of the segments')
+    parser.add_argument('--pairset_multi', type=str, default='./pairset/tvsum/pairs_multi_2k_4.npy', help='The local pairwise comparisons of the segments w.r.t. each preference for Multi-ranker')
+    parser.add_argument('--users', type=str, default='dataset/clustering/preferences_tvsum_4.npy', help='frame-level reference summaries per each preference')
     parser.add_argument('--split_path', type=str, default='./dataset/splits_tvsum.json', choices=['./dataset/splits_tvsum.json', './dataset/splits_summe.json'], help='The path to the json file containing the dataset splits and sets')
     parser.add_argument('--multi', type=bool, default=False, help='Using Standard ranker or Multi-ranker')
     parser.add_argument('--split', type=int, default=0, choices=[0,1,2,3,4], help='Which dataset split to use')
@@ -93,32 +94,17 @@ def main():
     if args.mode == 'training':
        model.train()
        print(" [*] Training finished!")
-    elif args.mode == 'testing':
-       model.test()
-       print(" [*] Testing finished!")
-    elif args.mode == 'kendall':
-       model.kendall()
-       print(" [*] Evaluation finished!")
-    elif args.mode == 'spearman':
-       model.spearman()
-       print(" [*] Evaluation finished!")
-    elif args.mode == 'both':
-       model.both()
-       print(" [*] Evaluation finished!") 
-    elif args.mode == 'both_subaction':
+    elif args.mode == 'local_preference':
        save_dir = os.path.join(args.save_dir, args.dataset, args.model_name)
        train_hist = np.load(os.path.join(save_dir, args.model_name + '_history.npy'), allow_pickle=True).item()
-       train_hist['local'] = model.local_subaction(True)
+       train_hist['local'] = model.local_preference(load=True)
        np.save(os.path.join(save_dir, args.model_name + '_history.npy'), train_hist)
        print(" [*] Evaluation finished!")
-    elif args.mode == 'comb_subaction':
+    elif args.mode == 'comb_preference':
        save_dir = os.path.join(args.save_dir, args.dataset, args.model_name)
        train_hist = np.load(os.path.join(save_dir, args.model_name + '_history.npy'), allow_pickle=True).item()
-       train_hist['combine'] = model.comb_subaction(True)
+       train_hist['combine'] = model.comb_preference(load=True)
        np.save(os.path.join(save_dir, args.model_name + '_history.npy'), train_hist)
-       print(" [*] Evaluation finished!")
-    elif args.mode == 'human':
-       model.human()
        print(" [*] Evaluation finished!")
 
 if __name__ == '__main__':
