@@ -145,9 +145,17 @@ Global human kendall tau validation-test: [0.17960041/0.01065329]
 Local human kendall tau validation-test: [0.26068578/0.01967284]
 ```
 
+- To aggregate the local evaluations of the trained Multi-ranker models across the dataset splits with respect to each preference options, run `main.py` with  `--mode=local_preference`, and then run `local_preference_exp.py` as follows:
+```python
+python3 local_preference_exp.py --save_dir=models/tvsum --metric=kendall
+```
+
+- To aggregate the personalized evaluations of the trained Multi-ranker models across the dataset splits with respect to each combination of preference set, run `main.py` with `--mode=comb_preference`, and then run `combine_preference_exp.py` as follows:
+```python
+python3 combine_preference_exp.py --save_dir=models/tvsum --metric=kendall
+```
 
 <!--### Plots & Results-->
-
 
 ## Citation
 If you use this code for your research, please cite our paper.
